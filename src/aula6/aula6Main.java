@@ -6,22 +6,44 @@ void main() {
 
     while (!desejaSair) {
         int opcaoEscolhida = menu();
-
         switch (opcaoEscolhida) {
             case 1:
-            String nome = IO.readln("Digite o nome do cliente: ");
-            String cpf = IO.readln("Digite seu cpf :");
-            Float saldo = Float.parseFloat(IO.readln("Digite o saldo do cliente: "));
-            Cliente novoCliente = new Cliente(nome, cpf, saldo);
+                salvarCliente(clientes);
                 break;
             case 2:
-                //
-            case 5:
+                listarClientes(clientes);
+                break;
+            case 3:
+
+                break;
+
+            case 0:
                 desejaSair = true;
+                System.out.println("Saindo!");
+                break;
 
         }
     }
+}
 
+public void salvarCliente(ArrayList<Cliente> clientes) {
+    String nome = IO.readln("Digite o nome do cliente: ");
+    String cpf = IO.readln("Digite o cpf: ");
+    Float saldo = 0.f;
+
+    Cliente cliente = new Cliente(nome, cpf, saldo);
+    clientes.add(cliente);
+    System.out.println("Cliente salvo com sucesso!");
+}
+
+public void listarClientes(ArrayList<Cliente> clientes) {
+    for (int i = 0; i < clientes.size(); i++) {
+        System.out.println(clientes.get(i));
+    }
+}
+public void removerCliente(ArrayList<Cliente> clientes) {
+    String cpf = IO.readln("Digite o cpf do cliente: ");
+    
 }
 
 public int menu() {
